@@ -11,9 +11,14 @@ function App() {
   const [page, setPage] = useState("booking");
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    setPage("booking");
+    const shouldLogout = window.confirm("Are you sure you want to logout?");
+
+    if (shouldLogout) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setIsLoggedIn(false);
+      setPage("booking");
+    }
   };
 
   if (!isLoggedIn) {
@@ -24,7 +29,7 @@ function App() {
     <div className="app-shell">
       <div className="container">
         <div className="topbar">
-          <div className="brand">Bookify</div>
+          <div className="brand">📅 Bookify</div>
 
           <div className="nav-actions">
             <button
@@ -54,9 +59,15 @@ function App() {
           </div>
         </div>
 
-        {page === "booking" && <Booking />}
-        {page === "appointments" && <MyAppointments />}
-        {page === "admin" && <Admin />}
+        <div className="page-wrapper">
+          {page === "booking" && <Booking />}
+          {page === "appointments" && <MyAppointments />}
+          {page === "admin" && <Admin />}
+        </div>
+
+        <div className="footer">
+          © {new Date().getFullYear()} Bookify. Built with React & Node.js
+        </div>
       </div>
     </div>
   );

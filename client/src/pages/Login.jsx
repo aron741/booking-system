@@ -48,6 +48,9 @@ export default function Login({ onLogin }) {
         <button className="primary-button" onClick={handleLogin}>
           Login
         </button>
+        <p style={{ marginTop: "12px", fontSize: "14px", color: "#6b7280" }}>
+  Demo: admin123@example.com / 123456
+</p>
       </div>
     </div>
   );

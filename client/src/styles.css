@@ -56,6 +56,11 @@ input {
   padding: 10px 16px;
   border-radius: 10px;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #d1d5db;
 }
 
 .nav-button.active {
@@ -69,6 +74,15 @@ input {
   padding: 10px 16px;
   border-radius: 10px;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #000000;
+}
+
+.page-wrapper {
+  margin-top: 20px;
 }
 
 .page-title {
@@ -88,6 +102,12 @@ input {
   border-radius: 18px;
   padding: 20px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
 }
 
 .card h3 {
@@ -107,10 +127,16 @@ input {
   border-radius: 10px;
   font-weight: 600;
   margin-top: 12px;
+  transition: all 0.2s ease;
 }
 
 .primary-button:hover {
   background: #1d4ed8;
+}
+
+.primary-button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
 }
 
 .form-card {
@@ -163,4 +189,11 @@ input {
   border-radius: 16px;
   color: #6b7280;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
 }
