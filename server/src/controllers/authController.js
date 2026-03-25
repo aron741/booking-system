@@ -25,7 +25,7 @@ const register = async (req, res) => {
         name,
         email,
         passwordHash,
-        role: "admin",
+        role: "user",
       },
     });
 
