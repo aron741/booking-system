@@ -13,39 +13,42 @@ export default function Login({ onLogin }) {
       });
 
       localStorage.setItem("token", res.data.token);
-      alert("Login successful");
       onLogin();
     } catch (err) {
-      console.error("LOGIN ERROR:", err);
-      console.error("RESPONSE DATA:", err.response?.data);
       alert(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Booking System</h1>
-      <h2>Login</h2>
+    <div className="app-shell">
+      <div className="form-card">
+        <h1>Welcome back</h1>
+        <p>Sign in to manage bookings and appointments.</p>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{ display: "block", marginBottom: "1rem", padding: "0.5rem" }}
-      />
+        <div className="form-group">
+          <input
+            className="form-input"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ display: "block", marginBottom: "1rem", padding: "0.5rem" }}
-      />
+        <div className="form-group">
+          <input
+            className="form-input"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-      <button onClick={handleLogin} style={{ padding: "0.5rem 1rem" }}>
-        Login
-      </button>
+        <button className="primary-button" onClick={handleLogin}>
+          Login
+        </button>
+      </div>
     </div>
   );
 }

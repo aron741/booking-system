@@ -21,35 +21,43 @@ function App() {
   }
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <nav style={{ marginBottom: "2rem" }}>
-        <button
-          onClick={() => setPage("booking")}
-          style={{ marginRight: "1rem" }}
-        >
-          Booking
-        </button>
+    <div className="app-shell">
+      <div className="container">
+        <div className="topbar">
+          <div className="brand">Bookify</div>
 
-        <button
-          onClick={() => setPage("appointments")}
-          style={{ marginRight: "1rem" }}
-        >
-          My Appointments
-        </button>
+          <div className="nav-actions">
+            <button
+              className={`nav-button ${page === "booking" ? "active" : ""}`}
+              onClick={() => setPage("booking")}
+            >
+              Booking
+            </button>
 
-        <button
-          onClick={() => setPage("admin")}
-          style={{ marginRight: "1rem" }}
-        >
-          Admin
-        </button>
+            <button
+              className={`nav-button ${page === "appointments" ? "active" : ""}`}
+              onClick={() => setPage("appointments")}
+            >
+              My Appointments
+            </button>
 
-        <button onClick={handleLogout}>Logout</button>
-      </nav>
+            <button
+              className={`nav-button ${page === "admin" ? "active" : ""}`}
+              onClick={() => setPage("admin")}
+            >
+              Admin
+            </button>
 
-      {page === "booking" && <Booking />}
-      {page === "appointments" && <MyAppointments />}
-      {page === "admin" && <Admin />}
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        </div>
+
+        {page === "booking" && <Booking />}
+        {page === "appointments" && <MyAppointments />}
+        {page === "admin" && <Admin />}
+      </div>
     </div>
   );
 }

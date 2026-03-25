@@ -9,7 +9,6 @@ export default function MyAppointments() {
       const res = await API.get("/appointments/me");
       setAppointments(res.data);
     } catch (err) {
-      console.error(err);
       alert("Failed to load appointments");
     }
   };
@@ -19,32 +18,26 @@ export default function MyAppointments() {
   }, []);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>My Appointments</h1>
+    <div>
+      <div className="page-title">My Appointments</div>
 
       {appointments.length === 0 ? (
-        <p>No appointments yet</p>
+        <div className="empty-state">You have no appointments yet.</div>
       ) : (
-        appointments.map((appointment) => (
-          <div
-            key={appointment.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "1rem",
-              marginBottom: "1rem",
-            }}
-          >
-            <p>
-              Date:{" "}
-              {new Date(appointment.availability.date).toLocaleDateString()}
-            </p>
-            <p>
-              Time: {appointment.availability.startTime} -{" "}
-              {appointment.availability.endTime}
-            </p>
-            <p>Status: {appointment.status}</p>
-          </div>
-        ))
+        <div className="card-grid">
+          {appointments.map((appointment) => (
+            <div className="card" key={appointment.id}>
+              <h3>
+                {new Date(appointment.availability.date).toLocaleDateString()}
+              </h3>
+              <p>
+                {appointment.availability.startTime} -{" "}
+                {appointment.availability.endTime}
+              </p>
+              <p>Status: {appointment.status}</p>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
