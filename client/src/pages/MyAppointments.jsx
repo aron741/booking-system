@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CalendarDays, Clock3, CheckCircle2 } from "lucide-react";
 import API from "../services/api";
 
 export default function MyAppointments() {
@@ -51,10 +52,15 @@ export default function MyAppointments() {
               <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">
                 Confirmed Appointment
               </p>
-              <h3 className="mt-2 text-xl font-bold text-slate-900">
-                {new Date(appointment.availability.date).toLocaleDateString()}
-              </h3>
+
+              <div className="mt-3 flex items-center gap-2 text-slate-900">
+                <CalendarDays className="h-5 w-5 text-emerald-600" />
+                <h3 className="text-xl font-bold">
+                  {new Date(appointment.availability.date).toLocaleDateString()}
+                </h3>
+              </div>
             </div>
+
             <div className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
               {appointment.status}
             </div>
@@ -62,10 +68,19 @@ export default function MyAppointments() {
 
           <div className="mt-6 rounded-2xl bg-slate-50 p-4">
             <p className="text-sm text-slate-500">Time</p>
-            <p className="mt-1 text-lg font-semibold text-slate-900">
-              {appointment.availability.startTime} -{" "}
-              {appointment.availability.endTime}
-            </p>
+
+            <div className="mt-2 flex items-center gap-2 text-slate-900">
+              <Clock3 className="h-5 w-5 text-slate-400" />
+              <p className="text-lg font-semibold">
+                {appointment.availability.startTime} -{" "}
+                {appointment.availability.endTime}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
+            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            Scheduled successfully
           </div>
         </div>
       ))}
